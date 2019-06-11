@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ProjektHotele.Models.HotelsDBB>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2><b>Lista Hoteli</b></h2>
+<br />
+
+<table class="table" style="background-color: rgba(192,192,192,0.6);border-style: double">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Standard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDodanie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WynajemOd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WynajemDo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rodzpl.Rodzajplatnosci)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stann.Stan)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Standard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDodanie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WynajemOd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WynajemDo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rodzpl.Rodzajplatnosci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stann.Stan)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Dodaj Nowy", "Create", new object { }, new { @class = "btn btn-info" })
+</p>

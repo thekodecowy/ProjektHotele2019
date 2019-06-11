@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HotelsDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HotelsDBB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Numer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Standard" Type="nvarchar" MaxLength="250" />
+          <Property Name="DataDodanie" Type="date" />
+          <Property Name="opis" Type="nvarchar" MaxLength="250" />
+          <Property Name="Cena" Type="nvarchar" MaxLength="250" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="250" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="250" />
+          <Property Name="WynajemOd" Type="date" />
+          <Property Name="WynajemDo" Type="date" />
+          <Property Name="RodzajPlatnosci" Type="int" />
+          <Property Name="Stan" Type="int" />
+        </EntityType>
+        <EntityType Name="Rodzpl">
+          <Key>
+            <PropertyRef Name="Id_rodzajplatnosci" />
+          </Key>
+          <Property Name="Id_rodzajplatnosci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rodzajplatnosci" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stann">
+          <Key>
+            <PropertyRef Name="idStan" />
+          </Key>
+          <Property Name="idStan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Stan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_HotelsDBB_Rodzpl">
+          <End Role="Rodzpl" Type="Self.Rodzpl" Multiplicity="0..1" />
+          <End Role="HotelsDBB" Type="Self.HotelsDBB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rodzpl">
+              <PropertyRef Name="Id_rodzajplatnosci" />
+            </Principal>
+            <Dependent Role="HotelsDBB">
+              <PropertyRef Name="RodzajPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelsDBB_Stann">
+          <End Role="Stann" Type="Self.Stann" Multiplicity="0..1" />
+          <End Role="HotelsDBB" Type="Self.HotelsDBB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stann">
+              <PropertyRef Name="idStan" />
+            </Principal>
+            <Dependent Role="HotelsDBB">
+              <PropertyRef Name="Stan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelsDBModel1StoreContainer">
+          <EntitySet Name="HotelsDBB" EntityType="Self.HotelsDBB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rodzpl" EntityType="Self.Rodzpl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stann" EntityType="Self.Stann" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HotelsDBB_Rodzpl" Association="Self.FK_HotelsDBB_Rodzpl">
+            <End Role="Rodzpl" EntitySet="Rodzpl" />
+            <End Role="HotelsDBB" EntitySet="HotelsDBB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelsDBB_Stann" Association="Self.FK_HotelsDBB_Stann">
+            <End Role="Stann" EntitySet="Stann" />
+            <End Role="HotelsDBB" EntitySet="HotelsDBB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelsDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HotelsDBB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Numer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Standard" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DataDodanie" Type="DateTime" Precision="0" />
+          <Property Name="opis" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Cena" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Imie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="WynajemOd" Type="DateTime" Precision="0" />
+          <Property Name="WynajemDo" Type="DateTime" Precision="0" />
+          <Property Name="RodzajPlatnosci" Type="Int32" />
+          <Property Name="Stan" Type="Int32" />
+          <NavigationProperty Name="Rodzpl" Relationship="Self.FK_HotelsDBB_Rodzpl" FromRole="HotelsDBB" ToRole="Rodzpl" />
+          <NavigationProperty Name="Stann" Relationship="Self.FK_HotelsDBB_Stann" FromRole="HotelsDBB" ToRole="Stann" />
+        </EntityType>
+        <EntityType Name="Rodzpl">
+          <Key>
+            <PropertyRef Name="Id_rodzajplatnosci" />
+          </Key>
+          <Property Name="Id_rodzajplatnosci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rodzajplatnosci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelsDBBs" Relationship="Self.FK_HotelsDBB_Rodzpl" FromRole="Rodzpl" ToRole="HotelsDBB" />
+        </EntityType>
+        <EntityType Name="Stann">
+          <Key>
+            <PropertyRef Name="idStan" />
+          </Key>
+          <Property Name="idStan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Stan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelsDBBs" Relationship="Self.FK_HotelsDBB_Stann" FromRole="Stann" ToRole="HotelsDBB" />
+        </EntityType>
+        <Association Name="FK_HotelsDBB_Rodzpl">
+          <End Role="Rodzpl" Type="Self.Rodzpl" Multiplicity="0..1" />
+          <End Role="HotelsDBB" Type="Self.HotelsDBB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rodzpl">
+              <PropertyRef Name="Id_rodzajplatnosci" />
+            </Principal>
+            <Dependent Role="HotelsDBB">
+              <PropertyRef Name="RodzajPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelsDBB_Stann">
+          <End Role="Stann" Type="Self.Stann" Multiplicity="0..1" />
+          <End Role="HotelsDBB" Type="Self.HotelsDBB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stann">
+              <PropertyRef Name="idStan" />
+            </Principal>
+            <Dependent Role="HotelsDBB">
+              <PropertyRef Name="Stan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelsDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HotelsDBBs" EntityType="Self.HotelsDBB" />
+          <EntitySet Name="Rodzpls" EntityType="Self.Rodzpl" />
+          <EntitySet Name="Stanns" EntityType="Self.Stann" />
+          <AssociationSet Name="FK_HotelsDBB_Rodzpl" Association="Self.FK_HotelsDBB_Rodzpl">
+            <End Role="Rodzpl" EntitySet="Rodzpls" />
+            <End Role="HotelsDBB" EntitySet="HotelsDBBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelsDBB_Stann" Association="Self.FK_HotelsDBB_Stann">
+            <End Role="Stann" EntitySet="Stanns" />
+            <End Role="HotelsDBB" EntitySet="HotelsDBBs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelsDBModel1StoreContainer" CdmEntityContainer="HotelsDBEntities1">
+          <EntitySetMapping Name="HotelsDBBs">
+            <EntityTypeMapping TypeName="HotelsDBModel1.HotelsDBB">
+              <MappingFragment StoreEntitySet="HotelsDBB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Numer" ColumnName="Numer" />
+                <ScalarProperty Name="Standard" ColumnName="Standard" />
+                <ScalarProperty Name="DataDodanie" ColumnName="DataDodanie" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="WynajemOd" ColumnName="WynajemOd" />
+                <ScalarProperty Name="WynajemDo" ColumnName="WynajemDo" />
+                <ScalarProperty Name="RodzajPlatnosci" ColumnName="RodzajPlatnosci" />
+                <ScalarProperty Name="Stan" ColumnName="Stan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rodzpls">
+            <EntityTypeMapping TypeName="HotelsDBModel1.Rodzpl">
+              <MappingFragment StoreEntitySet="Rodzpl">
+                <ScalarProperty Name="Id_rodzajplatnosci" ColumnName="Id_rodzajplatnosci" />
+                <ScalarProperty Name="Rodzajplatnosci" ColumnName="Rodzajplatnosci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stanns">
+            <EntityTypeMapping TypeName="HotelsDBModel1.Stann">
+              <MappingFragment StoreEntitySet="Stann">
+                <ScalarProperty Name="idStan" ColumnName="idStan" />
+                <ScalarProperty Name="Stan" ColumnName="Stan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
