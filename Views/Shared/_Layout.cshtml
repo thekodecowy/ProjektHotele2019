@@ -7,6 +7,11 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Site.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
 
 </head>
 <body>
@@ -22,43 +27,45 @@
                 <ul class="navbar-nav">
 
                     @Html.ActionLink("Strona Główna", "Index", "Home", new object { }, new { @class = "nav-link" })
-                    @Html.ActionLink("Hotele", "Home2Klient", "Home2", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Hotele", "KlientIndex", "HotelsDBBs", new object { }, new { @class = "nav-link" })
                     @Html.ActionLink("O nas", "Onas", "Onas", new object { }, new { @class = "nav-link" })
-                    @Html.ActionLink("Panel Admina", "Home2", "Home2", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Panel Admina", "Index", "HotelsDBBs", new object { }, new { @class = "nav-link" })
 
 
             </div>
 
             <div class="collapse navbar-collapse" id="tgmenu">
                 <ul class="navbar-nav ml-auto">
-                    @Html.ActionLink("Zaloguj się", "Zaloguj", "Zaloguj", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Zaloguj się", "Login", "User", new object { }, new { @class = "nav-link" })
                 </ul>
             </div>
-
-
-
-
 
         </nav>
 
 
     </div>
 
-    <div class="container">
-
-
+    <div class="container body-content">
         @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Holel reservation system</p>
+
+            @if (Request.IsAuthenticated)
+            {
+
+                using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                }
+
+            }
+
+        </footer>
     </div>
 
-
-
-
-
-
-
-
-
-    <script src="~/Content/jquery/jquery.min.js"></script>
-    <script src="~/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts", false)
 </body>
 </html>

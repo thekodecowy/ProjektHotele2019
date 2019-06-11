@@ -28,5 +28,7 @@ namespace ProjektHotele.Models
         public virtual DbSet<HotelsDBB> HotelsDBBs { get; set; }
         public virtual DbSet<Rodzpl> Rodzpls { get; set; }
         public virtual DbSet<Stann> Stanns { get; set; }
+
+        public System.Data.Entity.DbSet<ProjektHotele.Models.User> Users { get; set; }
     }
 }
