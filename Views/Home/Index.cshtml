@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 class="display-1 text-left text-md-left" style="margin-top: 100px">Witaj w YourHotels!</h1>
+<h2 class="display-4 text-left text-md-left">Potrzebujesz noclegu na już?</h2>
+<p class="lead" style="font-weight: bold">Doskonale trafiłeś u nas zrobisz to w 5 minut!</p>
+<p class="text-muted" style="font-weight: bold">Aby zarezerwować nocleg wystarczy się zalogować.</p>
+@Html.ActionLink("Zaloguj się", "Zaloguj", "Zaloguj", new object { }, new { @class = "btn btn-info" })
+@Html.ActionLink("Zarejestruj się", "Rejestracja", "Rejestracja", new object { }, new { @class = "btn btn-info" })
+
