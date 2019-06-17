@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+<div class="modal-dialog text-center">
+    <div class="col-sm-9 main-section">
+        <div class="modal-content">
+            <div class="col-12 user-img">
+                <img src="~/img/face2.png">
+            </div>
+            <div class="col-12 form-input">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Imie i nazwisko">
+                    </div>
+                    <div class="form-group">
+                        <input type="Login" class="form-control" placeholder="Login">
+                    </div>
+                    <div class="form-group">
+                        <input type="Logib" class="form-control" placeholder="E-mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Hasło">
+                    </div>
+
+                    <button type="submit" class="btn btn-info">Rejestracja</button>
+                </form>
+            </div>
+            <div class="col-12 forgot">
+                @Html.ActionLink("Strona logowania się", "Zaloguj", "Zaloguj", new object { }, new { @class = "nav-link" })
+            </div>
+
+        </div>
+    </div>
+</div>
+

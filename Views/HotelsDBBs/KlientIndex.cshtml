@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ProjektHotele.Models.HotelsDBB>
+
+@{
+    ViewBag.Title = "KlientIndex";
+}
+
+
+<h2>Lista Hoteli</h2>
+
+
+@foreach (var item in Model)
+{
+    <table width="250" ; height="600" style="background-color: rgba(192,192,192,0.6);border-style: double;display: inline-block">
+        <tr>
+    <td> <center>  <img src="~/img/room.jpg"  width="240"/></center></td>
+
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    @Html.ActionLink("Rezerwacja", "rezKlient", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Nazwa hoteli:<b> @Html.DisplayFor(modelItem => item.Nazwa)</b> </p>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <p>Numer pokoju:@Html.DisplayFor(modelItem => item.Numer)</p>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <p>Standard: @Html.DisplayFor(modelItem => item.Standard)</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <p>Data dodania: @Html.DisplayFor(modelItem => item.DataDodanie)</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+                <p>Opis: @Html.DisplayFor(modelItem => item.opis)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Status:<b>   @Html.DisplayFor(modelItem => item.Stann.Stan)</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Cena: <b>@Html.DisplayFor(modelItem => item.Cena)</b></p>
+            </td>
+        </tr>
+    </table>
+}

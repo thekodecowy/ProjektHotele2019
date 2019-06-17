@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HotelsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hotels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Numer" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Standard" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="DataDodania" Type="date" Nullable="false" />
+          <Property Name="Opis" Type="nchar" MaxLength="350" />
+          <Property Name="Stan" Type="nchar" MaxLength="55" Nullable="false" />
+          <Property Name="Cena" Type="nchar" MaxLength="20" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="wynajemod" Type="date" />
+          <Property Name="wynajemdo" Type="date" />
+          <Property Name="rodzjplatnosci" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="HotelsDBModelStoreContainer">
+          <EntitySet Name="Hotels" EntityType="Self.Hotels" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Numer" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Standard" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DataDodania" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Opis" Type="String" MaxLength="350" FixedLength="true" Unicode="true" />
+          <Property Name="Stan" Type="String" MaxLength="55" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Cena" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="wynajemod" Type="DateTime" Precision="0" />
+          <Property Name="wynajemdo" Type="DateTime" Precision="0" />
+          <Property Name="rodzjplatnosci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="HotelsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hotels" EntityType="HotelsDBModel.Hotel" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelsDBModelStoreContainer" CdmEntityContainer="HotelsDBEntities">
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="HotelsDBModel.Hotel">
+              <MappingFragment StoreEntitySet="Hotels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Numer" ColumnName="Numer" />
+                <ScalarProperty Name="Standard" ColumnName="Standard" />
+                <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Stan" ColumnName="Stan" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="wynajemod" ColumnName="wynajemod" />
+                <ScalarProperty Name="wynajemdo" ColumnName="wynajemdo" />
+                <ScalarProperty Name="rodzjplatnosci" ColumnName="rodzjplatnosci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
